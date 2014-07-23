@@ -21,7 +21,7 @@
   "main": "./lib/passport-google-id-token",
   "dependencies": {
     "pkginfo": "0.2.x",
-    "passport-oauth": "0.1.x",    
+    "passport": "0.1.x",
     "google-id-token": "0.1.x"
   },
   "engines": { "node": ">= 0.4.0" }
