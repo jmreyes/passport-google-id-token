@@ -1,0 +1,117 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'publish' ]
+2 info using npm@1.4.21
+3 info using node@v0.10.29
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /home/juanma/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/home/juanma/.npm/passport-google-id-token/0.1.6/package.tgz',
+10 verbose tar pack   '.' ]
+11 verbose tarball /home/juanma/.npm/passport-google-id-token/0.1.6/package.tgz
+12 verbose folder .
+13 info prepublish passport-google-id-token@0.1.6
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /home/juanma/.npm/1f1177db-tar.lock
+16 silly lockFile ab216275-oogle-id-token-0-1-6-package-tgz tar:///home/juanma/.npm/passport-google-id-token/0.1.6/package.tgz
+17 verbose lock tar:///home/juanma/.npm/passport-google-id-token/0.1.6/package.tgz /home/juanma/.npm/ab216275-oogle-id-token-0-1-6-package-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile ab216275-oogle-id-token-0-1-6-package-tgz tar:///home/juanma/.npm/passport-google-id-token/0.1.6/package.tgz
+21 silly lockFile ab216275-oogle-id-token-0-1-6-package-tgz tar:///home/juanma/.npm/passport-google-id-token/0.1.6/package.tgz
+22 silly lockFile c6efa8d9-rt-google-id-token-0-1-6-package /home/juanma/.npm/passport-google-id-token/0.1.6/package
+23 verbose lock /home/juanma/.npm/passport-google-id-token/0.1.6/package /home/juanma/.npm/c6efa8d9-rt-google-id-token-0-1-6-package.lock
+24 silly lockFile c6efa8d9-rt-google-id-token-0-1-6-package /home/juanma/.npm/passport-google-id-token/0.1.6/package
+25 silly lockFile c6efa8d9-rt-google-id-token-0-1-6-package /home/juanma/.npm/passport-google-id-token/0.1.6/package
+26 silly lockFile 3a52ce78- .
+27 silly lockFile 3a52ce78- .
+28 silly publish { name: 'passport-google-id-token',
+28 silly publish   version: '0.1.6',
+28 silly publish   description: 'Google ID token authentication strategy for Passport.',
+28 silly publish   keywords:
+28 silly publish    [ 'passport',
+28 silly publish      'google',
+28 silly publish      'auth',
+28 silly publish      'token',
+28 silly publish      'verification',
+28 silly publish      'authentication',
+28 silly publish      'identity' ],
+28 silly publish   repository:
+28 silly publish    { type: 'git',
+28 silly publish      url: 'git://github.com/juanmareyes/passport-google-id-token.git' },
+28 silly publish   bugs: { url: 'http://github.com/jaredhanson/passport-google-id-token/issues' },
+28 silly publish   author: { name: 'Juan Manuel Reyes', email: 'juanma.resp@gmail.com' },
+28 silly publish   licenses: [ { type: 'MIT', url: 'http://www.opensource.org/licenses/MIT' } ],
+28 silly publish   main: './lib/passport-google-id-token',
+28 silly publish   dependencies:
+28 silly publish    { pkginfo: '0.2.x',
+28 silly publish      passport: '0.1.x',
+28 silly publish      'google-id-token': '0.1.x' },
+28 silly publish   engines: { node: '>= 0.4.0' },
+28 silly publish   readme: 'passport-google-id-token\n========================\n\nGoogle ID token authentication strategy for [Passport](http://passportjs.org/) and [Node.js](http://nodejs.org/).\n\nThis module lets you authenticate using Google ID tokens in your Node.js applications.\nThis is useful for scenarios where we don\'t want to perform API calls to Google on behalf of the client, but we only want to authenticate it to our server. In short, we only validate the identity of the user by token verification, so there is no server-side OAuth operation.\n\nMore information about ID token use cases:\n\n- [Client-Server Authentication with ID tokens](http://www.riskcompletefailure.com/2013/11/client-server-authentication-with-id.html)\n- [Verifying Back-End Calls from Android Apps](http://android-developers.blogspot.in/2013/01/verifying-back-end-calls-from-android.html)\n\nThis module leverages [google-id-token](https://github.com/gmelika/google-id-token) to decode and verify the signature of the ID token.\n\n## Install\n\n    $ npm install passport-google-id-token\n\n## Usage\n\n#### Configure Strategy\n\nThe strategy requires a `verify` callback which accepts an `idToken`,\nand `googleId` of the user to be authenticated, and then calls the `done`\ncallback supplying a `parsedToken` with all its information in visible form,\nand the very `googleId`, which should be set to `false` if the\ncredentials are not valid.\n\nThe strategy also requires the Google client ID inside the passed `options`. \nAn optional `getGoogleCerts` function can be specified to customize the way the Google certificates are retrieved, interesting e.g. in case a caching mechanism is needed. If not specified, the default mechanism will query the Google servers every time.\n\n```js\nvar GoogleTokenStrategy = require(\'passport-google-id-token\').Strategy;\n\npassport.use(new GoogleTokenStrategy({\n    clientID: GOOGLE_CLIENT_ID,\n    getGoogleCerts: customGetGoogleCerts\n  },\n  function(parsedToken, googleId, done) {\n    User.findOrCreate({ googleId: googleId }, function (err, user) {\n      return done(err, user);\n    });\n  }\n));\n```\n\n#### Authenticate Requests\n\nUse `passport.authenticate()`, specifying the `\'google-id-token\'` strategy, to authenticate requests.\n\n```js\napp.post(\'/auth/google\',\n  passport.authenticate(\'google-id-token\'),\n  function (req, res) {\n    // do something with req.user\n    res.send(req.user? 200 : 401);\n  }\n);\n```\n\nThe post request to this route should include a JSON object with the keys `id_token` and `google_id` set to the credentials the client receives from Google (e.g. after successful Google+ sign-in).\n\n\n## License\n\n(The MIT License)\n\nCopyright (c) 2014 Juan Manuel Reyes\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the "Software"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n',
+28 silly publish   readmeFilename: 'README.md',
+28 silly publish   gitHead: '7e8092c400c9249e4ba65760fdfe12189aae1ce9',
+28 silly publish   homepage: 'https://github.com/juanmareyes/passport-google-id-token',
+28 silly publish   _id: 'passport-google-id-token@0.1.6',
+28 silly publish   scripts: {},
+28 silly publish   _shasum: '33fea91cdc0bf5327bde1222b2cb3adcc672be6b',
+28 silly publish   _from: '.' }
+29 verbose request where is /passport-google-id-token
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id 539c0e1b2ebbb8bc
+32 verbose url raw /passport-google-id-token
+33 verbose url resolving [ 'https://registry.npmjs.org/', './passport-google-id-token' ]
+34 verbose url resolved https://registry.npmjs.org/passport-google-id-token
+35 verbose request where is https://registry.npmjs.org/passport-google-id-token
+36 info trying registry request attempt 1 at 00:27:45
+37 http PUT https://registry.npmjs.org/passport-google-id-token
+38 http 403 https://registry.npmjs.org/passport-google-id-token
+39 verbose headers { date: 'Thu, 24 Jul 2014 22:30:31 GMT',
+39 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+39 verbose headers   'content-type': 'application/json',
+39 verbose headers   'cache-control': 'max-age=60',
+39 verbose headers   'content-length': '7097',
+39 verbose headers   'accept-ranges': 'bytes',
+39 verbose headers   via: '1.1 varnish',
+39 verbose headers   'x-served-by': 'cache-fra1235-FRA',
+39 verbose headers   'x-cache': 'MISS',
+39 verbose headers   'x-cache-hits': '0',
+39 verbose headers   'x-timer': 'S1406241030.996859,VS0,VE678',
+39 verbose headers   'keep-alive': 'timeout=10, max=50',
+39 verbose headers   connection: 'Keep-Alive' }
+40 error publish Failed PUT 403
+41 error Error: forbidden cannot modify pre-existing version: 0.1.6
+41 error old={"name":"passport-google-id-token","version":"0.1.6","description":"Google ID token authentication strategy for Passport.","keywords":["passport","google","auth","token","verification","authentication","identity"],"repository":{"type":"git","url":"git://github.com/juanmareyes/passport-google-id-token.git"},"bugs":{"url":"http://github.com/jaredhanson/passport-google-id-token/issues"},"author":{"name":"Juan Manuel Reyes","email":"juanma.resp@gmail.com"},"licenses":[{"type":"MIT","url":"http://www.opensource.org/licenses/MIT"}],"main":"./lib/passport-google-id-token","dependencies":{"pkginfo":"0.2.x","passport":"0.1.x","google-id-token":"0.1.x"},"engines":{"node":">= 0.4.0"},"gitHead":"8588511afb0aef16beabe0cf0b0f9973bfedfd08","homepage":"https://github.com/juanmareyes/passport-google-id-token","_id":"passport-google-id-token@0.1.6","scripts":{},"_shasum":"47cd0867dfdc405f359c55ed243ef3cfce41b379","_from":".","_npmVersion":"1.4.21","_npmUser":{"name":"jmreyes","email":"juanma.resp@gmail.com"},"maintainers":[{"name":"jmreyes","email":"juanma.resp@gmail.com"}],"dist":{"shasum":"47cd0867dfdc405f359c55ed243ef3cfce41b379","tarball":"http://registry.npmjs.org/passport-google-id-token/-/passport-google-id-token-0.1.6.tgz"}}
+41 error new={"name":"passport-google-id-token","version":"0.1.6","description":"Google ID token authentication strategy for Passport.","keywords":["passport","google","auth","token","verification","authentication","identity"],"repository":{"type":"git","url":"git://github.com/juanmareyes/passport-google-id-token.git"},"bugs":{"url":"http://github.com/jaredhanson/passport-google-id-token/issues"},"author":{"name":"Juan Manuel Reyes","email":"juanma.resp@gmail.com"},"licenses":[{"type":"MIT","url":"http://www.opensource.org/licenses/MIT"}],"main":"./lib/passport-google-id-token","dependencies":{"pkginfo":"0.2.x","passport":"0.1.x","google-id-token":"0.1.x"},"engines":{"node":">= 0.4.0"},"readme":"passport-google-id-token\u000a========================\u000a\u000aGoogle ID token authentication strategy for [Passport](http://passportjs.org/) and [Node.js](http://nodejs.org/).\u000a\u000aThis module lets you authenticate using Google ID tokens in your Node.js applications.\u000aThis is useful for scenarios where we don't want to perform API calls to Google on behalf of the client, but we only want to authenticate it to our server. In short, we only validate the identity of the user by token verification, so there is no server-side OAuth operation.\u000a\u000aMore information about ID token use cases:\u000a\u000a- [Client-Server Authentication with ID tokens](http://www.riskcompletefailure.com/2013/11/client-server-authentication-with-id.html)\u000a- [Verifying Back-End Calls from Android Apps](http://android-developers.blogspot.in/2013/01/verifying-back-end-calls-from-android.html)\u000a\u000aThis module leverages [google-id-token](https://github.com/gmelika/google-id-token) to decode and verify the signature of the ID token.\u000a\u000a## Install\u000a\u000a    $ npm install passport-google-id-token\u000a\u000a## Usage\u000a\u000a#### Configure Strategy\u000a\u000aThe strategy requires a `verify` callback which accepts an `idToken`,\u000aand `googleId` of the user to be authenticated, and then calls the `done`\u000acallback supplying a `parsedToken` with all its information in visible form,\u000aand the very `googleId`, which should be set to `false` if the\u000acredentials are not valid.\u000a\u000aThe strategy also requires the Google client ID inside the passed `options`. \u000aAn optional `getGoogleCerts` function can be specified to customize the way the Google certificates are retrieved, interesting e.g. in case a caching mechanism is needed. If not specified, the default mechanism will query the Google servers every time.\u000a\u000a```js\u000avar GoogleTokenStrategy = require('passport-google-id-token').Strategy;\u000a\u000apassport.use(new GoogleTokenStrategy({\u000a    clientID: GOOGLE_CLIENT_ID,\u000a    getGoogleCerts: customGetGoogleCerts\u000a  },\u000a  function(parsedToken, googleId, done) {\u000a    User.findOrCreate({ googleId: googleId }, function (err, user) {\u000a      return done(err, user);\u000a    });\u000a  }\u000a));\u000a```\u000a\u000a#### Authenticate Requests\u000a\u000aUse `passport.authenticate()`, specifying the `'google-id-token'` strategy, to authenticate requests.\u000a\u000a```js\u000aapp.post('/auth/google',\u000a  passport.authenticate('google-id-token'),\u000a  function (req, res) {\u000a    // do something with req.user\u000a    res.send(req.user? 200 : 401);\u000a  }\u000a);\u000a```\u000a\u000aThe post request to this route should include a JSON object with the keys `id_token` and `google_id` set to the credentials the client receives from Google (e.g. after successful Google+ sign-in).\u000a\u000a\u000a## License\u000a\u000a(The MIT License)\u000a\u000aCopyright (c) 2014 Juan Manuel Reyes\u000a\u000aPermission is hereby granted, free of charge, to any person obtaining a copy of\u000athis software and associated documentation files (the \"Software\"), to deal in\u000athe Software without restriction, including without limitation the rights to\u000ause, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\u000athe Software, and to permit persons to whom the Software is furnished to do so,\u000asubject to the following conditions:\u000a\u000aThe above copyright notice and this permission notice shall be included in all\u000acopies or substantial portions of the Software.\u000a\u000aTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\u000aIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\u000aFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\u000aCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\u000aIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\u000aCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\u000a","readmeFilename":"README.md","gitHead":"7e8092c400c9249e4ba65760fdfe12189aae1ce9","homepage":"https://github.com/juanmareyes/passport-google-id-token","_id":"passport-google-id-token@0.1.6","scripts":{},"_shasum":"33fea91cdc0bf5327bde1222b2cb3adcc672be6b","_from":".","_npmVersion":"1.4.21","_npmUser":{"name":"jmreyes","email":"juanma.resp@gmail.com"},"maintainers":[{"name":"jmreyes","email":"juanma.resp@gmail.com"}],"dist":{"shasum":"33fea91cdc0bf5327bde1222b2cb3adcc672be6b","tarball":"http://registry.npmjs.org/passport-google-id-token/-/passport-google-id-token-0.1.6.tgz"}}: passport-google-id-token
+41 error     at RegClient.<anonymous> (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:300:14)
+41 error     at Request._callback (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:238:65)
+41 error     at Request.self.callback (/usr/lib/node_modules/npm/node_modules/request/request.js:123:22)
+41 error     at Request.emit (events.js:98:17)
+41 error     at Request.<anonymous> (/usr/lib/node_modules/npm/node_modules/request/request.js:893:14)
+41 error     at Request.emit (events.js:117:20)
+41 error     at IncomingMessage.<anonymous> (/usr/lib/node_modules/npm/node_modules/request/request.js:844:12)
+41 error     at IncomingMessage.emit (events.js:117:20)
+41 error     at _stream_readable.js:929:16
+41 error     at process._tickCallback (node.js:419:13)
+42 error If you need help, you may report this *entire* log,
+42 error including the npm and node versions, at:
+42 error     <http://github.com/npm/npm/issues>
+43 error System Linux 3.15.5-2-ARCH
+44 error command "/usr/bin/node" "/usr/bin/npm" "publish"
+45 error cwd /media/lin_data/code/etc/passport-google-id-token
+46 error node -v v0.10.29
+47 error npm -v 1.4.21
+48 verbose exit [ 1, true ]
