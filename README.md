@@ -30,16 +30,20 @@ credentials are not valid.
 The strategy also requires the Google client ID inside the passed `options`. 
 An optional `getGoogleCerts` function can be specified to customize the way the Google certificates are retrieved, interesting e.g. in case a caching mechanism is needed. If not specified, the default mechanism will query the Google servers every time.
 
-    passport.use(new GoogleTokenStrategy({
-        clientID: GOOGLE_CLIENT_ID,
-        getGoogleCerts: customGetGoogleCerts
-      },
-      function(parsedToken, googleId, done) {
-        User.findOrCreate({ googleId: googleId }, function (err, user) {
-          return done(err, user);
-        });
-      }
-    ));
+```js
+var GoogleTokenStrategy = require('./passport-google-id-token').Strategy;
+
+passport.use(new GoogleTokenStrategy({
+    clientID: GOOGLE_CLIENT_ID,
+    getGoogleCerts: customGetGoogleCerts
+  },
+  function(parsedToken, googleId, done) {
+    User.findOrCreate({ googleId: googleId }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+```
 
 #### Authenticate Requests
 
