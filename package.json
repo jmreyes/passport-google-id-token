@@ -1,14 +1,14 @@
 {
   "name": "passport-google-id-token",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Google ID token authentication strategy for Passport.",
   "keywords": ["passport", "google", "auth", "token", "verification", "authentication", "identity"],
   "repository": {
     "type": "git",
-    "url": "git://github.com/juanmareyes/passport-google-id-token.git"
+    "url": "git://github.com/jmreyes/passport-google-id-token.git"
   },
   "bugs": {
-    "url": "http://github.com/jaredhanson/passport-google-id-token/issues"
+    "url": "http://github.com/jmreyes/passport-google-id-token/issues"
   },
   "author": {
     "name": "Juan Manuel Reyes",
