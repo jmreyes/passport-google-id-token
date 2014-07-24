@@ -43,7 +43,19 @@ An optional `getGoogleCerts` function can be specified to customize the way the 
 
 #### Authenticate Requests
 
-WIP
+Use `passport.authenticate()`, specifying the `'google-id-token'` strategy, to authenticate requests.
+
+```js
+app.post('/auth/google',
+  passport.authenticate('google-id-token'),
+  function (req, res) {
+    // do something with req.user
+    res.send(req.user? 200 : 401);
+  }
+);
+```
+
+The post request to this route should include a JSON object with the keys `id_token` and `google_id` set to the credentials the client receives from Google (e.g. after successful Google+ sign-in).
 
 
 ## License
