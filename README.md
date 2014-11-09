@@ -61,6 +61,10 @@ app.post('/auth/google',
 
 The post request to this route should include a JSON object with the keys `id_token` and `google_id` set to the credentials the client receives from Google (e.g. after successful Google+ sign-in).
 
+## Credits
+
+  - [Juanma Reyes](http://github.com/jmreyes)
+  - [Mike Nicholson](http://github.com/themikenicholson)
 
 ## License
 
