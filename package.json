@@ -22,7 +22,8 @@
   "dependencies": {
     "pkginfo": "0.2.x",
     "passport": "0.1.x",
-    "google-id-token": "0.1.x"
+    "google-id-token": "0.1.x",
+    "request": "2.47.x"
   },
   "engines": { "node": ">= 0.4.0" }
 }
