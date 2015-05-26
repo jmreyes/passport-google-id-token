@@ -61,6 +61,7 @@ The post request to this route should include a JSON object with the key `id_tok
 
   - [Juanma Reyes](http://github.com/jmreyes)
   - [Mike Nicholson](http://github.com/themikenicholson)
+  - [Marco Sanson](http://github.com/marcosanson)
 
 ## License
 
