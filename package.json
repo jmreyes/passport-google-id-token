@@ -1,6 +1,6 @@
 {
   "name": "passport-google-id-token",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Google ID token authentication strategy for Passport.",
   "keywords": ["passport", "google", "auth", "token", "verification", "authentication", "identity"],
   "repository": {
@@ -20,10 +20,10 @@
   } ],
   "main": "./lib/passport-google-id-token",
   "dependencies": {
-    "pkginfo": "0.2.x",
-    "passport": "0.1.x",
     "google-id-token": "0.1.x",
-    "request": "2.47.x"
+    "passport-strategy": "^1.0.0",
+    "pkginfo": "0.3.x",
+    "request": "2.64.x"
   },
   "engines": { "node": ">= 0.4.0" }
 }
