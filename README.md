@@ -21,7 +21,7 @@ This module leverages [google-id-token](https://github.com/gmelika/google-id-tok
 
 #### Configure Strategy
 
-The strategy requires a `verify` callback which accepts the `idToken` coming from the user to be authenticated, and then calls the `done` callback supplying a `parsedToken` with all its information in visible form, and the `googleId`, which should be set to `false` if the credentials are not valid.
+The strategy requires a `verify` callback which accepts the `idToken` coming from the user to be authenticated, and then calls the `done` callback supplying a `parsedToken` (with all its information in visible form) and the `googleId`.
 
 The strategy also requires the Google client ID inside the passed `options`. 
 An optional `getGoogleCerts` function can be specified to customize the way the Google certificates are retrieved, interesting e.g. in case a caching mechanism is needed. If not specified, the default mechanism will query the Google servers every time.
@@ -63,6 +63,7 @@ The post request to this route should include a JSON object with the key `id_tok
   - [Mike Nicholson](http://github.com/themikenicholson)
   - [Marco Sanson](http://github.com/marcosanson)
   - [Michal Kubenka](https://github.com/mkubenka)
+  - [Tom Hoag](https://github.com/tomhoag)
 
 ## License
 
