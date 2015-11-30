@@ -1,8 +1,16 @@
 {
   "name": "passport-google-id-token",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Google ID token authentication strategy for Passport.",
-  "keywords": ["passport", "google", "auth", "token", "verification", "authentication", "identity"],
+  "keywords": [
+    "passport",
+    "google",
+    "auth",
+    "token",
+    "verification",
+    "authentication",
+    "identity"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/jmreyes/passport-google-id-token.git"
@@ -14,10 +22,12 @@
     "name": "Juan Manuel Reyes",
     "email": "juanma.resp@gmail.com"
   },
-  "licenses": [ {
-    "type": "MIT",
-    "url": "http://www.opensource.org/licenses/MIT"
-  } ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
   "main": "./lib/passport-google-id-token",
   "dependencies": {
     "google-id-token": "0.1.x",
@@ -25,5 +35,7 @@
     "pkginfo": "0.3.x",
     "request": "2.64.x"
   },
-  "engines": { "node": ">= 0.4.0" }
+  "engines": {
+    "node": ">= 0.4.0"
+  }
 }
