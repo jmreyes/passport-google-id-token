@@ -6,6 +6,10 @@ Google ID token authentication strategy for [Passport](http://passportjs.org/) a
 This module lets you authenticate using Google ID tokens in your Node.js applications.
 This is useful for scenarios where we don't want to perform API calls to Google on behalf of the client, but we only want to authenticate it to our server. In short, we only validate the identity of the user by token verification, so there is no server-side OAuth operation.
 
+Official Google documentation:
+
+- [Authenticate with a backend server](https://developers.google.com/identity/sign-in/android/backend-auth)
+
 More information about ID token use cases:
 
 - [Client-Server Authentication with ID tokens](http://www.riskcompletefailure.com/2013/11/client-server-authentication-with-id.html)
@@ -23,7 +27,7 @@ This module leverages [google-id-token](https://github.com/gmelika/google-id-tok
 
 The strategy requires a `verify` callback which accepts the `idToken` coming from the user to be authenticated, and then calls the `done` callback supplying a `parsedToken` (with all its information in visible form) and the `googleId`.
 
-The strategy also requires the Google client ID inside the passed `options`. 
+The strategy also requires the Google client ID inside the passed `options`.
 An optional `getGoogleCerts` function can be specified to customize the way the Google certificates are retrieved, interesting e.g. in case a caching mechanism is needed. If not specified, the default mechanism will query the Google servers every time.
 
 ```js
