@@ -20,7 +20,8 @@
   },
   "author": {
     "name": "Juan Manuel Reyes",
-    "email": "juanma.resp@gmail.com"
+    "email": "juanma.resp@gmail.com",
+    "url": "http://jmreyes.net"
   },
   "licenses": [
     {
@@ -35,7 +36,15 @@
     "pkginfo": "0.3.x",
     "request": "2.64.x"
   },
+  "devDependencies": {
+    "mocha": "2.x.x",
+    "chai": "2.x.x",
+    "chai-passport-strategy": "0.2.x"
+  },
   "engines": {
     "node": ">= 0.4.0"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js"
   }
 }
