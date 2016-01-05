@@ -1,12 +1,16 @@
 {
+  "common_header": {
+    "alg": "RS256",
+    "typ": "JWT",
+    "kid": "dummy_kid"
+  },
   "valid_token" : {
     "encoded" : "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImR1bW15X2tpZCJ9.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhdWQiOiJEVU1NWV9DTElFTlRfSUQiLCJleHAiOiIxNzY3MzMzMTIxIn0.S4C74V0B0akFYWVfyw8CJlpyDzcG1beMJTBt4cmjAZq5kaZ8Asa5OrWICmxlnq0Ujwe6Xaxk3mEfdknqqtMCpOsCIkO0D8Yg_TwbF3k-wbhmowCLkLRiaXbORgap4gBPfbry_pCeS3X6836PX5_GmnVjaE_zOtkTRyMY3ZAA_Ao",
     "decoded_payload" : {
       "iss": "https://accounts.google.com",
       "aud": "DUMMY_CLIENT_ID",
       "exp": "1767333121"
-    },
-    "secret" : "dummy_secret"
+    }
   },
   "expired_token" : {
     "encoded" : "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImR1bW15X2tpZCJ9.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhdWQiOiJEVU1NWV9DTElFTlRfSUQiLCJleHAiOiIxNDUxOTMzMTIxIn0.Jt31mpkuHZrgEyvcDGBCUH8e1Cu3V9SlGKsE0sR01T-85xvKU2HNkeHmX30On9d8A26c0zYrpVQmOe5QCzj1xyxzp5k_U_zy-lzPU8qyj__bu0NWpq-mYvHdv8PZILi3RDrV_VAUo6R2CX3SVq6Ryhrl0Nz7_nmHNU0XGGU9PLs",
@@ -14,7 +18,22 @@
       "iss": "https://accounts.google.com",
       "aud": "DUMMY_CLIENT_ID",
       "exp": "1451933121"
-    },
-    "secret" : "dummy_secret"
+    }
+  },
+  "bad_aud_token" : {
+    "encoded" : "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImR1bW15X2tpZCJ9.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhdWQiOiJCQURfQVVEIiwiZXhwIjoiMTc2NzMzMzEyMSJ9.cW6v1iK9YRhLzQh43gr6KA5exKMv8C8qL3s24LSqHkGg7c02NB-4yvFC_JwhFVBjhfhPxmHMzGVA_lBlERhCQHn49GCuP4go1SGEt5BEPNoy1k5BbDHTZPJJejhZYSwPLqDGQCZcUwiYWTUemnsW26ACBe5zx2OitI95gwDUDNk",
+    "decoded_payload" : {
+      "iss": "https://accounts.google.com",
+      "aud": "BAD_AUD",
+      "exp": "1767333121"
+    }
+  },
+  "bad_signing_token" : {
+    "encoded" : "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImR1bW15X2tpZCJ9.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhdWQiOiJEVU1NWV9DTElFTlRfSUQiLCJleHAiOiIxNzY3MzMzMTIxIn0.I-ij2CoOWFzWWk3AjMFRhYksCWriFlMqh0pQkAujCLFLZxLfk-7Vu3YkvNSLv-wWPNcijmG4VWPksAHzIIkh6VPXppGtpAlAJ2cfbFr03EugZ2isyUOqGl3eCXUNwm__3n8XIjlCJ8zzWSfQNwCvA7E5Q8iAWmOn_pdKWFOCzHs",
+    "decoded_payload" : {
+      "iss": "https://accounts.google.com",
+      "aud": "DUMMY_CLIENT_ID",
+      "exp": "1767333121"
+    }
   }
 }

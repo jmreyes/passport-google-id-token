@@ -34,7 +34,7 @@ describe('Strategy', function() {
     });
   });
 
-  describe('handling a request with incorrect token form', function() {
+  describe('handling a request with malformed token', function() {
     var strategy = new Strategy({
         clientID: 'DUMMY_CLIENT_ID'
       },
@@ -62,6 +62,84 @@ describe('Strategy', function() {
       expect(info).to.have.property('message',
         'jwt payload is supposed to be composed of '
         + '3 base64url encoded parts separated by a \'.\'');
+    });
+  });
+
+  describe('handling a request with well-formed token', function() {
+    var strategy = new Strategy({
+        clientID: 'DUMMY_CLIENT_ID'
+      },
+      function(parsedToken, googleId, done) {
+        return done(null, { id: '1234' });
+      }
+    );
+
+    strategy._getGoogleCerts = mockGetGoogleCerts;
+
+    describe('but not signed with a Google public key', function() {
+
+      var info;
+
+      before(function(done) {
+        chai.passport.use(strategy)
+          .fail(function(i) {
+            info = i;
+            done();
+          })
+          .req(function(req) {
+            req.query = { id_token : tokens.bad_signing_token.encoded };
+          })
+          .authenticate();
+      });
+
+      it('should fail', function() {
+        expect(info).to.exist;
+        expect(info).to.have.property('message', 'id_token not signed with a Google public key');
+      });
+    });
+
+    describe('but expired', function() {
+
+      var info;
+
+      before(function(done) {
+        chai.passport.use(strategy)
+          .fail(function(i) {
+            info = i;
+            done();
+          })
+          .req(function(req) {
+            req.query = { id_token : tokens.expired_token.encoded };
+          })
+          .authenticate();
+      });
+
+      it('should fail', function() {
+        expect(info).to.exist;
+        expect(info).to.have.property('message', 'id_token expired');
+      });
+    });
+
+    describe('but aud does not match clientID', function() {
+
+      var info;
+
+      before(function(done) {
+        chai.passport.use(strategy)
+          .fail(function(i) {
+            info = i;
+            done();
+          })
+          .req(function(req) {
+            req.query = { id_token : tokens.bad_aud_token.encoded };
+          })
+          .authenticate();
+      });
+
+      it('should fail', function() {
+        expect(info).to.exist;
+        expect(info).to.have.property('message', 'id_token clientID mismatch');
+      });
     });
   });
 
