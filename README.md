@@ -35,7 +35,7 @@ var GoogleTokenStrategy = require('passport-google-id-token');
 
 passport.use(new GoogleTokenStrategy({
     clientID: GOOGLE_CLIENT_ID,
-    getGoogleCerts: customGetGoogleCerts
+    getGoogleCerts: optionalCustomGetGoogleCerts
   },
   function(parsedToken, googleId, done) {
     User.findOrCreate({ googleId: googleId }, function (err, user) {
@@ -73,7 +73,7 @@ The post request to this route should include a JSON object with the key `id_tok
 
 (The MIT License)
 
-Copyright (c) 2014-2015 Juan Manuel Reyes
+Copyright (c) 2014-2016 Juan Manuel Reyes
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

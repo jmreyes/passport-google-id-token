@@ -31,9 +31,8 @@
   ],
   "main": "./lib/passport-google-id-token",
   "dependencies": {
-    "google-id-token": "0.1.x",
     "passport-strategy": "^1.0.0",
-    "pkginfo": "0.3.x",
+    "jsonwebtoken": "^5.0.0",
     "request": "2.64.x"
   },
   "devDependencies": {

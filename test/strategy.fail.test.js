@@ -59,9 +59,6 @@ describe('Strategy', function() {
 
     it('should fail', function() {
       expect(info).to.exist;
-      expect(info).to.have.property('message',
-        'jwt payload is supposed to be composed of '
-        + '3 base64url encoded parts separated by a \'.\'');
     });
   });
 
@@ -77,7 +74,6 @@ describe('Strategy', function() {
     strategy._getGoogleCerts = mockGetGoogleCerts;
 
     describe('but not signed with a Google public key', function() {
-
       var info;
 
       before(function(done) {
@@ -94,12 +90,10 @@ describe('Strategy', function() {
 
       it('should fail', function() {
         expect(info).to.exist;
-        expect(info).to.have.property('message', 'id_token not signed with a Google public key');
       });
     });
 
     describe('but expired', function() {
-
       var info;
 
       before(function(done) {
@@ -116,12 +110,10 @@ describe('Strategy', function() {
 
       it('should fail', function() {
         expect(info).to.exist;
-        expect(info).to.have.property('message', 'id_token expired');
       });
     });
 
-    describe('but aud does not match clientID', function() {
-
+    describe('but audience does not match clientID', function() {
       var info;
 
       before(function(done) {
@@ -138,7 +130,27 @@ describe('Strategy', function() {
 
       it('should fail', function() {
         expect(info).to.exist;
-        expect(info).to.have.property('message', 'id_token clientID mismatch');
+      });
+    });
+
+    describe('but issuer does not match Google', function() {
+      var info;
+
+      before(function(done) {
+        chai.passport.use(strategy)
+          .fail(function(i) {
+            info = i;
+            done();
+          })
+          .req(function(req) {
+            req.query = { id_token : tokens.bad_issuer_token.encoded };
+          })
+          .authenticate();
+      });
+
+      it('should fail', function() {
+        expect(info).to.exist;
+        expect(info).to.have.property('message', 'jwt issuer invalid');
       });
     });
   });
