@@ -15,8 +15,6 @@ More information about ID token use cases:
 - [Client-Server Authentication with ID tokens](http://www.riskcompletefailure.com/2013/11/client-server-authentication-with-id.html)
 - [Verifying Back-End Calls from Android Apps](http://android-developers.blogspot.in/2013/01/verifying-back-end-calls-from-android.html)
 
-This module leverages [google-id-token](https://github.com/gmelika/google-id-token) to decode and verify the signature of the ID token.
-
 ## Install
 
     $ npm install passport-google-id-token

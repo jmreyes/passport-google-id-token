@@ -1,6 +1,6 @@
 {
   "name": "passport-google-id-token",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Google ID token authentication strategy for Passport.",
   "keywords": [
     "passport",
