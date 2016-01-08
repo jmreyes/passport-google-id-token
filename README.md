@@ -1,6 +1,8 @@
 passport-google-id-token
 ========================
 
+[![Build Status](https://travis-ci.org/jmreyes/passport-google-id-token.svg?branch=master)](https://travis-ci.org/jmreyes/passport-google-id-token)
+
 Google ID token authentication strategy for [Passport](http://passportjs.org/) and [Node.js](http://nodejs.org/).
 
 This module lets you authenticate using Google ID tokens in your Node.js applications.
