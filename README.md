@@ -1,7 +1,7 @@
-passport-google-id-token
+passport-google-id-multi-token
 ========================
 
-[![Build Status](https://travis-ci.org/jmreyes/passport-google-id-token.svg?branch=master)](https://travis-ci.org/jmreyes/passport-google-id-token)
+Identical to [passport-google-id-token](https://github.com/jmreyes/passport-google-id-token), except that you can provide an array of client ID's to check against.
 
 Google ID token authentication strategy for [Passport](http://passportjs.org/) and [Node.js](http://nodejs.org/).
 

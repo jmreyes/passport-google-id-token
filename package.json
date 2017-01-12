@@ -31,8 +31,9 @@
   ],
   "main": "./lib/passport-google-id-token",
   "dependencies": {
-    "passport-strategy": "^1.0.0",
+    "async": "^2.1.4",
     "jsonwebtoken": "^5.0.0",
+    "passport-strategy": "^1.0.0",
     "request": "2.64.x"
   },
   "devDependencies": {
