@@ -63,15 +63,29 @@ describe('Strategy', function() {
   });
 
   describe('handling a request with well-formed token', function() {
+    function verify(parsedToken, googleId, done) {
+      return done(null, { id: '1234' });
+    }
+
     var strategy = new Strategy({
         clientID: 'DUMMY_CLIENT_ID'
       },
-      function(parsedToken, googleId, done) {
-        return done(null, { id: '1234' });
-      }
+      verify
+    );
+
+    var strategyWClientIDArray = new Strategy({
+        clientID: [ 
+          'DUMMY_CLIENT_ID_1',
+          'DUMMY_CLIENT_ID_2',
+          'DUMMY_CLIENT_ID',
+          'DUMMY_CLIENT_ID_3'
+        ]
+      },
+      verify
     );
 
     strategy._getGoogleCerts = mockGetGoogleCerts;
+    strategyWClientIDArray._getGoogleCerts = mockGetGoogleCerts;
 
     describe('but not signed with a Google public key', function() {
       var info;
@@ -118,6 +132,26 @@ describe('Strategy', function() {
 
       before(function(done) {
         chai.passport.use(strategy)
+          .fail(function(i) {
+            info = i;
+            done();
+          })
+          .req(function(req) {
+            req.query = { id_token : tokens.bad_aud_token.encoded };
+          })
+          .authenticate();
+      });
+
+      it('should fail', function() {
+        expect(info).to.exist;
+      });
+    });
+
+    describe('but audience does not match clientID (in clientID array)', function() {
+      var info;
+
+      before(function(done) {
+        chai.passport.use(strategyWClientIDArray)
           .fail(function(i) {
             info = i;
             done();

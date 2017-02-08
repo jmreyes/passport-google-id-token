@@ -9,15 +9,28 @@ describe('Strategy', function() {
     callback(null, certs[kid]);
   };
 
+  function verify(parsedToken, googleId, done) {
+    return done(null, { id: '1234' }, { scope: 'read' });
+  }
+
   var strategy = new Strategy({
       clientID: 'DUMMY_CLIENT_ID'
     },
-    function(parsedToken, googleId, done) {
-      return done(null, { id: '1234' }, { scope: 'read' });
-    }
+    verify
   );
 
-  function performValidTokenTest(reqFunction) {
+  var strategyWClientIDArray = new Strategy({
+      clientID: [ 
+        'DUMMY_CLIENT_ID_1',
+        'DUMMY_CLIENT_ID_2',
+        'DUMMY_CLIENT_ID',
+        'DUMMY_CLIENT_ID_3'
+      ]
+    },
+    verify
+  );
+
+  function performValidTokenTest(strategy, reqFunction) {
     var user
       , info;
 
@@ -44,27 +57,34 @@ describe('Strategy', function() {
   };
 
   strategy._getGoogleCerts = mockGetGoogleCerts;
+  strategyWClientIDArray._getGoogleCerts = mockGetGoogleCerts;
 
   describe('handling a request with id_token as query parameter', function() {
-    performValidTokenTest(function(req) {
+    performValidTokenTest(strategy, function(req) {
       req.query = { id_token : tokens.valid_token.encoded };
     });
   });
 
   describe('handling a request with access_token as query parameter', function() {
-    performValidTokenTest(function(req) {
+    performValidTokenTest(strategy, function(req) {
       req.query = { access_token : tokens.valid_token.encoded };
     });
   });
 
   describe('handling a request with id_token as body parameter', function() {
-    performValidTokenTest(function(req) {
-      req.body = { access_token : tokens.valid_token.encoded };
+    performValidTokenTest(strategy, function(req) {
+      req.body = { id_token : tokens.valid_token.encoded };
     });
   });
 
   describe('handling a request with access_token as body parameter', function() {
-    performValidTokenTest(function(req) {
+    performValidTokenTest(strategy, function(req) {
+      req.body = { access_token : tokens.valid_token.encoded };
+    });
+  });
+
+  describe('handling a valid request with clientID array in strategy options', function() {
+    performValidTokenTest(strategyWClientIDArray, function(req) {
       req.body = { access_token : tokens.valid_token.encoded };
     });
   });
