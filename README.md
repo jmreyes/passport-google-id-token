@@ -27,7 +27,7 @@ More information about ID token use cases:
 
 The strategy requires a `verify` callback which accepts the `idToken` coming from the user to be authenticated, and then calls the `done` callback supplying a `parsedToken` (with all its information in visible form) and the `googleId`.
 
-The strategy also requires the Google client ID inside the passed `options`.
+The strategy also requires the Google client ID(s) inside the passed `options`.
 An optional `getGoogleCerts` function can be specified to customize the way the Google certificates are retrieved, interesting e.g. in case a caching mechanism is needed. If not specified, the default mechanism will query the Google servers every time.
 
 ```js
@@ -68,12 +68,13 @@ The post request to this route should include a JSON object with the key `id_tok
   - [Marco Sanson](http://github.com/marcosanson)
   - [Michal Kubenka](https://github.com/mkubenka)
   - [Tom Hoag](https://github.com/tomhoag)
+  - [Bence Ferdinandy](https://github.com/priestoferis)
 
 ## License
 
 (The MIT License)
 
-Copyright (c) 2014-2016 Juan Manuel Reyes
+Copyright (c) 2014-2017 Juan Manuel Reyes
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
