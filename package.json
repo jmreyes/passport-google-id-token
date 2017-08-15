@@ -33,7 +33,7 @@
   "dependencies": {
     "passport-strategy": "^1.0.0",
     "jsonwebtoken": "^5.0.0",
-    "request": "2.64.x"
+    "request": "2.68.x"
   },
   "devDependencies": {
     "mocha": "2.x.x",
