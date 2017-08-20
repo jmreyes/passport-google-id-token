@@ -36,7 +36,7 @@
     "request": "2.81.x"
   },
   "devDependencies": {
-    "mocha": "2.x.x",
+    "mocha": "3.x.x",
     "chai": "2.x.x",
     "chai-passport-strategy": "0.2.x"
   },
