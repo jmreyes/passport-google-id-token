@@ -23,12 +23,7 @@
     "email": "juanma.resp@gmail.com",
     "url": "http://jmreyes.net"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/MIT"
-    }
-  ],
+  "license": "MIT",
   "main": "./lib/passport-google-id-token",
   "dependencies": {
     "passport-strategy": "^1.0.0",
