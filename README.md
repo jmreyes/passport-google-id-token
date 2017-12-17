@@ -28,7 +28,7 @@ More information about ID token use cases:
 The strategy requires a `verify` callback which accepts the `idToken` coming from the user to be authenticated, and then calls the `done` callback supplying a `parsedToken` (with all its information in visible form) and the `googleId`.
 
 The strategy also requires the Google client ID(s) inside the passed `options`.
-An optional `getGoogleCerts` function can be specified to customize the way the Google certificates are retrieved, interesting e.g. in case a caching mechanism is needed. If not specified, the default mechanism will query the Google servers every time. Also, an optional `jwtOptions` can be specified, which will be passed onto [jwt](https://github.com/auth0/node-jsonwebtoken), e.g. `jwtOptions : {"ignoreExpiration":true}` to ignore expiration time on tokens.
+An optional `getGoogleCerts` function can be specified to customize the way the Google certificates are retrieved, interesting e.g. in case a caching mechanism is needed. If not specified, the default mechanism will query the Google servers every time.
 
 ```js
 var GoogleTokenStrategy = require('passport-google-id-token');
@@ -60,6 +60,10 @@ app.post('/auth/google',
 ```
 
 The post request to this route should include a JSON object with the key `id_token` set to the one the client received from Google (e.g. after successful Google+ sign-in).
+
+#### About JWT validation
+
+This library leverages [node-jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) for JWT token validation. An optional `jwtOptions` can be specified to customize the way this validation is performed as per [the documentation](https://github.com/auth0/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback).
 
 ## Credits
 
