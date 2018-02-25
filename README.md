@@ -73,12 +73,13 @@ This library leverages [node-jsonwebtoken](https://github.com/auth0/node-jsonweb
   - [Michal Kubenka](https://github.com/mkubenka)
   - [Tom Hoag](https://github.com/tomhoag)
   - [Bence Ferdinandy](https://github.com/priestoferis)
+  - [Jonas Scheffner](https://github.com/jscheffner)
 
 ## License
 
 (The MIT License)
 
-Copyright (c) 2014-2017 Juan Manuel Reyes
+Copyright (c) 2014-2018 Juan Manuel Reyes
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
