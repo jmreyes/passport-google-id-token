@@ -83,6 +83,12 @@ describe('Strategy', function() {
     });
   });
 
+  describe('handling a request with bearer token in authorization header', function() {
+    performValidTokenTest(strategy, function(req) {
+      req.headers = { authorization: 'Bearer ' + tokens.valid_token.encoded };
+    });
+  });
+
   describe('handling a valid request with clientID array in strategy options', function() {
     performValidTokenTest(strategyWClientIDArray, function(req) {
       req.body = { access_token : tokens.valid_token.encoded };
