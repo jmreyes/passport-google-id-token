@@ -26,7 +26,7 @@
   "license": "MIT",
   "main": "./lib/passport-google-id-token",
   "dependencies": {
-    "jsonwebtoken": "^5.0.0",
+    "jsonwebtoken": "^9.0.0",
     "passport-strategy": "^1.0.0",
     "request": "^2.88.0"
   },
